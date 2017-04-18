@@ -24,8 +24,8 @@ const mutations = new GraphQLObjectType({
             type: ItemType,
             args: {
                 name: {type: GraphQLString},
-                user_id: {type: GraphQLInt},
-                category_id: {type: GraphQLInt},
+                user_id: {type: GraphQLID},
+                category_id: {type: GraphQLID},
                 type: {type: GraphQLString}
             },
             resolve(parentValue, args){
