@@ -24,13 +24,13 @@ const mutations = new GraphQLObjectType({
             type: ItemType,
             args: {
                 name: {type: GraphQLString},
-                user_id: {type: GraphQLID},
-                category_id: {type: GraphQLID},
+                user_id: {type: GraphQLInt},
+                category_id: {type: GraphQLInt},
                 type: {type: GraphQLString}
             },
             resolve(parentValue, args){
                 return axios.post(cons.route + 'item/', args).then(r => r.data)
-                    .catch(e => console.log(e));
+                    .catch(e => console.dir(e));
             }
         },
         ItemDelete: {

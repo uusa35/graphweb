@@ -52,7 +52,7 @@ const queries = new GraphQLObjectType({
         },
         item: {
             type: ItemType,
-            args: {id: {type: GraphQLID}},
+            args: {id: {type: GraphQLInt}},
             resolve(parentValue, args) {
                 return axios.get(`${cons.route}item/${args.id}`).then(r => r.data).catch(e => console.log(e));
             }
