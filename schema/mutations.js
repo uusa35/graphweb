@@ -1,6 +1,7 @@
 /**
  * Created by usamaahmed on 4/11/17.
  */
+require('dotenv/config');
 const axios = require('axios');
 const graphql = require('graphql');
 const {
@@ -13,9 +14,10 @@ const {
     GraphQLList,
     GraphQLNonNull
     } = graphql;
-const cons = require('./constants');
 const ItemType = require('./ItemType');
 const UserType = require('./UserType');
+const route = process.env.route;
+console.log(route);
 
 const mutations = new GraphQLObjectType({
     name: 'mutation',
@@ -29,8 +31,7 @@ const mutations = new GraphQLObjectType({
                 type: {type: GraphQLString}
             },
             resolve(parentValue, args){
-                console.log(cons.route);
-                return axios.post(cons.route + 'item/', args).then(r => r.data)
+                return axios.post(route + 'item/', args).then(r => r.data)
                     .catch(e => console.dir(e));
             }
         },
@@ -40,7 +41,7 @@ const mutations = new GraphQLObjectType({
                 id: {type: GraphQLInt}
             },
             resolve(parentValue, args) {
-                return axios.delete(cons.route + `item/${args.id}`)
+                return axios.delete(route + `item/${args.id}`)
                     .then(response => response.data)
                     .catch(e => console.log(e));
             }
@@ -55,7 +56,7 @@ const mutations = new GraphQLObjectType({
                 type: {type: GraphQLString}
             },
             resolve(parentValue, args) {
-                return axios.patch(cons.route + `item/${args.id}`, args)
+                return axios.patch(route + `item/${args.id}`, args)
                     .then(response => response.data)
                     .catch(e => console.log(e))
             }
@@ -68,7 +69,7 @@ const mutations = new GraphQLObjectType({
                 password: {type: GraphQLString}
             },
             resolve(parentValue, args) {
-                return axios.post(`${cons.route}auth`, args)
+                return axios.post(`${route}auth`, args)
                     .then(r => r.data.token).catch(e => console.log(e));
             }
         },
@@ -77,7 +78,7 @@ const mutations = new GraphQLObjectType({
             type: UserType,
             args: {token: {type: GraphQLString}},
             resolve(parentValue, args) {
-                return axios.post(`${cons.route}auth/me`, {
+                return axios.post(`${route}auth/me`, {
                     headers: {'Authentication': 'Bearer ' + args.token},
                 }).then(r => r.data).catch(e => console.log(e));
 

@@ -1,6 +1,7 @@
 /**
  * Created by usamaahmed on 4/11/17.
  */
+require('dotenv/config');
 const axios = require('axios');
 const graphql = require('graphql');
 const {
@@ -17,11 +18,9 @@ const {
 const UserType = require('./UserType');
 const UserMetaType = require('./UserMetaType');
 const ItemType = require('./ItemType');
-const cons = require('./constants');
+//const cons = require('./constants');
+const route = process.env.route;
 
-//axios.defaults.baseURL = 'https://api.example.com';
-//axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-//axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 const queries = new GraphQLObjectType({
     name: 'queries',
     fields: () => ({
