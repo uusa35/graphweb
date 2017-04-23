@@ -8,7 +8,7 @@ app.use('/graphql', expressGraphQl({
     graphiql: true
 }));
 
-app.listen('8080', function() {
+app.listen('4000', function() {
     console.log('listening ..');
 });
 

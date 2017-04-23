@@ -31,6 +31,7 @@ const ItemType = new GraphQLObjectType({
         user_id: {type: GraphQLInt},
         category_id: {type: GraphQLInt},
         type: {type: GraphQLString},
+        image : { type : GraphQLString},
         updated_at: {type: GraphQLString},
         created_at: {type: GraphQLString}
     })

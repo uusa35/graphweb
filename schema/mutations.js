@@ -29,8 +29,7 @@ const mutations = new GraphQLObjectType({
                 type: {type: GraphQLString}
             },
             resolve(parentValue, args){
-                return axios.post(cons.route + 'item/', args)
-                    .then(r => r.data)
+                return axios.post(cons.route + 'item/', args).then(r => r.data)
                     .catch(e => console.log(e));
             }
         },
