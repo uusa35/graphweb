@@ -47,7 +47,7 @@ const mutations = new GraphQLObjectType({
         ItemEdit: {
             type: ItemType,
             args: {
-                id: {type: new GraphQLNonNull(GraphQLID)},
+                id: {type: new GraphQLNonNull(GraphQLInt)},
                 name: {type: GraphQLString},
                 category_id: {type: GraphQLInt},
                 user_id: {type: GraphQLInt},
