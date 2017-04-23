@@ -21,6 +21,6 @@ if (process.env.server === 'production') {
 
 //const route = 'http://learn-graph-api.dev/api/';
 
-module.exports = {
-    route
-}
+//module.exports = {
+//    route
+//}
