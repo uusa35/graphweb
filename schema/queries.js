@@ -27,14 +27,14 @@ const queries = new GraphQLObjectType({
         users: {
             type: new GraphQLList(UserType),
             resolve(parentValue) {
-                return axios.get(`${cons.route}user`).then(r => r.data).catch(e => console.log(e));
+                return axios.get(`${route}user`).then(r => r.data).catch(e => console.log(e));
             }
         },
         user: {
             type: UserType,
             args: {id: {type: GraphQLID}},
             resolve(parentValue, args) {
-                return axios.get(`${cons.route}user/${args.id}`).then(r => r.data).catch(e=> console.log(e));
+                return axios.get(`${route}user/${args.id}`).then(r => r.data).catch(e=> console.log(e));
             }
         },
         user_meta: {
@@ -46,14 +46,14 @@ const queries = new GraphQLObjectType({
         items: {
             type: new GraphQLList(ItemType),
             resolve(parentValue) {
-                return axios.get(`${cons.route}item`).then(r => r.data).catch(e =>console.log(e));
+                return axios.get(`${route}item`).then(r => r.data).catch(e =>console.log(e));
             }
         },
         item: {
             type: ItemType,
             args: {id: {type: GraphQLInt}},
             resolve(parentValue, args) {
-                return axios.get(`${cons.route}item/${args.id}`).then(r => r.data).catch(e => console.log(e));
+                return axios.get(`${route}item/${args.id}`).then(r => r.data).catch(e => console.log(e));
             }
         }
     })
